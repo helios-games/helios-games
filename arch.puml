@@ -1,0 +1,25 @@
+@startuml
+
+actor User
+
+node games.alexecollins.com {
+  component Nginx
+  note right: SSL termination
+  rectangle Kubernetes {
+    component Web
+    component Wallet
+    component Gf
+    database StateDB
+    database WalletDB
+  }
+}
+
+User -> Nginx
+Nginx -> Web
+Web -> Gf
+Web --> Wallet
+Gf --> Wallet
+Wallet --> WalletDB
+Gf --> StateDB
+
+@enduml
