@@ -18,4 +18,4 @@ Run tests:
 
 # Architecture
 
-![Delpoyment][arch.png]
+![Delpoyment](arch.png)
