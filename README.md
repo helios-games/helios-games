@@ -1,16 +1,8 @@
 
-Checkout submodules:
 
-  TODO
+Checkout submodules, then install and start start local cluster:
 
-Start local cluster:
-
-    brew install minikube
-    minikube start
-    minikube addons enable heapster
-    for F in $(find . -maxdepth 2 -type f -name '*.yml'); do
-      kubectl create -f $F
-    do
+    ./init.sh
 
 Run tests:
 
