@@ -16,3 +16,6 @@
 [submodule "router"]
 	path = router
 	url = git@github.com:phoebus-games/router.git
+[submodule "phoebus-games.github.io"]
+	path = phoebus-games.github.io
+	url = git@github.com:phoebus-games/phoebus-games.github.io.git
