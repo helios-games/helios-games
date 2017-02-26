@@ -13,3 +13,6 @@
 [submodule "smoke"]
 	path = smoke
 	url = git@github.com:phoebus-games/smoke.git
+[submodule "router"]
+	path = router
+	url = git@github.com:phoebus-games/router.git
