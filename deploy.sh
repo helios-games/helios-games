@@ -1,7 +1,7 @@
 #!/bin/sh
 set -eux
 
-eval $(mimikube docker-env)
+eval $(minikube docker-env)
 
 W=${*:-statedb walletdb wallet gf web}
 
