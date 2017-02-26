@@ -12,4 +12,4 @@
 	url = git@github.com:phoebus-games/web.git
 [submodule "smoke"]
 	path = smoke
-	url = git@github.com:helios-games/smoke.git
+	url = git@github.com:phoebus-games/smoke.git
