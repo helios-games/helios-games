@@ -11,7 +11,7 @@ for U in $W ; do
         F=deploy/$U.yml
       ;;
     *)
-      docker images |grep alexec/web|awk '{printf "%s:%s", $1, $2}'|xargs docker rmi  --force
+      docker images |grep alexec/$U|awk '{printf "%s:%s ", $1, $2}'|xargs docker rmi  --force
       F=$U/$U.yml
       ;;
   esac
