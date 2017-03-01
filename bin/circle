@@ -1,0 +1,55 @@
+#!/usr/bin/env groovy
+@Grapes(
+        @Grab(group = 'org.yaml', module = 'snakeyaml', version = '1.18')
+)
+import org.yaml.snakeyaml.Yaml
+
+def log(String line) {
+    println "\033[0;1m$line \033[0m"
+}
+
+def exec(String command) {
+    log " $command"
+    def process = new ProcessBuilder("bash", "-c", command)
+            .redirectErrorStream(true)
+            .start()
+
+    process.waitFor()
+    if (process.exitValue() != 0) {
+        process.inputStream.eachLine { println it }
+        exit 1
+    }
+}
+
+input = new FileInputStream(new File("circle.yml"))
+
+def doc = new Yaml().load(input)
+
+if (doc.compile == null) {
+    doc.compile = [:]
+}
+
+if (doc.compile.override == null) {
+    doc.compile.override = ["mvn compile"]
+}
+
+args.each { subcommand ->
+    switch (subcommand) {
+        case "compile":
+            log "compile"
+            doc.compile.override.each { exec(it) }
+            break
+        case "test":
+            log "test"
+            doc.test.override.each { exec(it) }
+            break
+        case "deploy":
+            doc.deployment.each { key, value ->
+                log "deploy $key"
+                value.commands.each { exec(it) }
+            }
+            break
+        default:
+            throw new IllegalArgumentException(subcommand)
+    }
+}
