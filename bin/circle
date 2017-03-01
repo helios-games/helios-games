@@ -9,15 +9,23 @@ def log(String line) {
 }
 
 def exec(String command) {
-    log " $command"
     def process = new ProcessBuilder("bash", "-c", command)
             .redirectErrorStream(true)
             .start()
 
+    def debug = []
+    process.inputStream.eachLine {
+        def s = it.substring(0, Math.min(it.length(), 80))
+        print "                                                                                \r"
+        print "$s\r"
+        System.out.flush()
+        debug.add(s)
+    }
+    print "                                                                                \r"
     process.waitFor()
     if (process.exitValue() != 0) {
-        process.inputStream.eachLine { println it }
-        exit 1
+        debug.each {println it}
+        System.exit 1
     }
 }
 
@@ -30,23 +38,36 @@ if (doc.compile == null) {
 }
 
 if (doc.compile.override == null) {
-    doc.compile.override = ["mvn compile"]
+    doc.compile.override = ["mvn clean compile"]
 }
 
 args.each { subcommand ->
     switch (subcommand) {
         case "compile":
-            log "compile"
-            doc.compile.override.each { exec(it) }
+            log "compile:"
+            log "  override:"
+            doc.compile.override.each {
+                log "  - $it"
+                exec(it)
+            }
             break
         case "test":
-            log "test"
-            doc.test.override.each { exec(it) }
+            log "test:"
+            log "  override:"
+            doc.test.override.each {
+                log "  - $it"
+                exec(it)
+            }
             break
         case "deploy":
+            log "deploy:"
             doc.deployment.each { key, value ->
-                log "deploy $key"
-                value.commands.each { exec(it) }
+                log "  $key:"
+                log "    commands:"
+                value.commands.each {
+                    log "     - $it"
+                    exec(it)
+                }
             }
             break
         default:
