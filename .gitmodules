@@ -2,7 +2,7 @@
 	path = deploy
 	url = git@github.com:phoebus-games/deploy.git
 [submodule "gf"]
-	path = gf
+	path = games
 	url = git@github.com:phoebus-games/gf.git
 [submodule "wallet"]
 	path = wallet
