@@ -2,7 +2,7 @@
 
 Checkout submodules, then install and start start local cluster:
 
-    ./init.sh
+    ./sync.sh
 
 Run tests:
 
@@ -10,11 +10,11 @@ Run tests:
 
 Credit account:
 
-    kubectl exec -it walletdb-0 -- psql -U wallet wallet -c 'update wallet set balance = 1000;'
+    kubectl exec -it postgres-0 -- psql -U wallet wallet -c 'update wallet set balance = 1000;'
 
 Release change log lock:
 
-    kubectl exec -it walletdb-0 -- psql -U wallet wallet -c 'delete from databasechangeloglock;''
+    kubectl exec -it postgres-0 -- psql -U wallet wallet -c 'delete from databasechangeloglock;''
 
 # Architecture
 
