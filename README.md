@@ -10,15 +10,11 @@ Run tests:
 
 Credit account:
 
-    docker exec -it 3a9db2a4b731 psql -U wallet wallet
-
-    update wallet set balance = 1000;
+    kubectl exec -it walletdb-0 -- psql -U wallet wallet -c 'update wallet set balance = 1000;'
 
 Release change log lock:
 
-    docker exec -it d582267e8684 psql -U wallet wallet
-
-    delete from databasechangeloglock;
+    kubectl exec -it walletdb-0 -- psql -U wallet wallet -c 'delete from databasechangeloglock;''
 
 # Architecture
 
