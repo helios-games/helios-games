@@ -1,0 +1,27 @@
+@startuml
+
+skinparam shadowing false
+skinparam monochrome true
+skinparam componentStyle uml2
+
+start
+
+:Version Control Commit;
+partition "Component Build" {
+  :Build Component;
+  :Test Component;
+  :Build Docker Image;
+  :Push Docker Image to Registry;
+}
+partition "Component Deploy" {
+  :Deploy Component;
+  :Restart Web;
+}
+partition "Test" {
+  :Smoke Test;
+  :Load Test;
+}
+
+stop
+
+@enduml

@@ -2,27 +2,26 @@
 
 skinparam shadowing false
 skinparam monochrome true
+skinparam componentStyle uml2
 
-actor User
+actor Player
 
 node games.alexecollins.com {
-  component Nginx
-  note right: SSL termination
   rectangle Kubernetes {
-    component Web
-    component Wallet
-    component Gf
-    database StateDB
-    database WalletDB
-  }
+    component "Web \n(Nginx)" as Web
+    component "Router\n(Play)" as Router
+    component "Wallet\n(Jersey)" as Wallet
+    component Game
+    database "StateDB\n(Mongo)" as StateDB
+    database "WalletDB\n(Postgres)" as WalletDB
 }
 
-User -> Nginx
-Nginx -> Web
-Web -> Gf
-Web --> Wallet
-Gf --> Wallet
+Player -> Web
+Web -> Router
+Router --> Wallet
+Router -->  Game
+Game --> Wallet
 Wallet --> WalletDB
-Gf --> StateDB
+Game --> StateDB
 
 @enduml
