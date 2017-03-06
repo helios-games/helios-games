@@ -1,21 +1,24 @@
 @startuml
 
 skinparam shadowing false
-skinparam monochrome true
+'skinparam monochrome true
 skinparam componentStyle uml2
 
 start
 
 :Version Control Commit;
+:Git hook;
 partition "Component Build" {
   :Build Component;
   :Test Component;
   :Build Docker Image;
   :Push Docker Image to Registry;
+  :CircleCI API call;
 }
 partition "Component Deploy" {
   :Deploy Component;
   :Restart Web;
+  :CircleCI API call;
 }
 partition "Test" {
   :Smoke Test;

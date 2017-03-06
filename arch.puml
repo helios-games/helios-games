@@ -1,19 +1,18 @@
 @startuml
 
 skinparam shadowing false
-skinparam monochrome true
+'skinparam monochrome true
 skinparam componentStyle uml2
 
 actor Player
 
-node games.alexecollins.com {
-  rectangle Kubernetes {
-    component "Web \n(Nginx)" as Web
-    component "Router\n(Play)" as Router
-    component "Wallet\n(Jersey)" as Wallet
-    component Game
-    database "StateDB\n(Mongo)" as StateDB
-    database "WalletDB\n(Postgres)" as WalletDB
+cloud Kubernetes {
+  component "Web \n(Nginx)" as Web
+  component "Router\n(Play)" as Router
+  component "Wallet\n(Jersey)" as Wallet
+  component Game
+  database "StateDB\n(Mongo)" as StateDB
+  database "WalletDB\n(Postgres)" as WalletDB
 }
 
 Player -> Web
