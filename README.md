@@ -18,4 +18,5 @@ Release change log lock:
 
 # Architecture
 
-![Delpoyment](arch.png)
+![Architecture](arch.png)
+![CI](ci.png)
