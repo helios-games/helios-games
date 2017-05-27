@@ -25,3 +25,6 @@
 [submodule "load-test"]
 	path = load-test
 	url = git@github.com:phoebus-games/load-test.git
+[submodule "roulette-service"]
+	path = roulette-service
+	url = git@github.com:phoebus-games/roulette-service.git
