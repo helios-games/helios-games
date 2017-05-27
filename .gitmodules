@@ -4,9 +4,6 @@
 [submodule "games"]
 	path = games
 	url = git@github.com:phoebus-games/games.git
-[submodule "classic-slot"]
-	path = classic-slot
-	url = git@github.com:phoebus-games/classic-slot.git
 [submodule "wallet"]
 	path = wallet
 	url = git@github.com:phoebus-games/wallet.git
@@ -28,3 +25,6 @@
 [submodule "roulette-service"]
 	path = roulette-service
 	url = git@github.com:phoebus-games/roulette-service.git
+[submodule "classic-slot-service"]
+	path = classic-slot-service
+	url = git@github.com:phoebus-games/classic-slot-service.git
