@@ -1,12 +1,18 @@
 
 
-Checkout submodules, then install and start start local cluster:
+Checkout submodules:
 
     ./sync.sh
 
-Run tests:
+To start local cluster:
 
-  TODO
+  minikube start
+  kubectl apply -f deploy/manifests/
+  minikube dashboard
+  kubectl expose deployment web-deployment --port=80 --target-port=80 --type=NodePort
+  open http://192.168.99.100:32374
+
+TODO: how to access this?!  
 
 Credit account:
 

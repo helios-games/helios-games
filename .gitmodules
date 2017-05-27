@@ -4,9 +4,6 @@
 [submodule "games"]
 	path = games
 	url = git@github.com:phoebus-games/games.git
-[submodule "roulette"]
-	path = roulette
-	url = git@github.com:phoebus-games/roulette.git
 [submodule "classic-slot"]
 	path = classic-slot
 	url = git@github.com:phoebus-games/classic-slot.git
